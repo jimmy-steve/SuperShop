@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% for product in products %}
+<div class="col-md-3 m-2">
+    <div class="card" style="width: 18rem;">
+
+        <h3 class="card-header">{{ product.name }}</h3>
+        <img src="{{ product.thumbnail.url }}" class="card-img-top" alt="{{ product.name }}">
+        <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+        </div>
+        <div class="card-body">
+            <a href="{{ product.get_absolute_url }}" class="card-link">Voir l'article</a>
+        </div>
+        <div class="card-footer text-muted">
+            2 days ago
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+{% endblock %}

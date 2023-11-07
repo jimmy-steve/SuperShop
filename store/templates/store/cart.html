@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col-md-6 mx-auto">
+    <h1>Mon panier</h1>
+    <p>Vous avez {{ orders.count }} produits dans votre panier</p>
+
+<table class="table table-hover">
+  <thead class="bg-dark">
+    <tr>
+      <th scope="col">Produit</th>
+      <th scope="col">Image</th>
+      <th scope="col">Quantité</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for order in orders %}
+    <tr>
+      <td>{{ order.product.name }}</td>
+      <td><img src="{{ order.product.thumbnail.url }}" alt="{{ order.product.name }}" style="max-width: 250px"></td>
+      <td>{{ order.quantity }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<a href="{% url 'delete-cart' %}" class="btn btn-danger">Supprimer le panier</a>
+</div>
+{% endblock %}
