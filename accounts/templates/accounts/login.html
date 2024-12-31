@@ -1,21 +1,60 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="login-container">
+        <div class="login-reg-panel">
+        <div class="login-info-box">
+            <h2>Have an account?</h2>
+            <p>If you already have an account, you can log in here to access your profile and preferences.</p>
+            <label id="label-register" for="log-reg-show">Login</label>
+            <input type="radio" name="active-log-panel" id="log-reg-show" {% if not show_register %}checked{% endif %}>
+        </div>
 
-<h1>Connexion</h1>
-<form method="POST">
-    {% csrf_token %}
-    <p>
-        <label for="username">Nom d'utilisateur</label>
-        <input id="username" type="text" name="username">
-    </p>
-    <p>
-        <label for="password">Mot de passe</label>
-        <input id="password" type="password" name="password">
-    </p>
-    <button type="submit">Connexion</button>
+        <div class="register-info-box">
+            <h2>Don't have an account?</h2>
+            <p>If you don't have an account yet, you can register here to get started and enjoy all the features we offer.</p>
+            <label id="label-login" for="log-login-show">Register</label>
+            <input type="radio" name="active-log-panel" id="log-login-show" {% if show_register %}checked{% endif %}>
+        </div>
 
-</form>
+        <div class="white-panel">
+            <!-- Login Form -->
+            <div class="login-show" {% if show_register %}style="display:none;"{% endif %}>
+                <form method="POST">
+                    <h2>LOGIN</h2>
+                    <p>
+                        <label for="username">Nom d'utilisateur</label>
+                        <input id="username" type="text" name="username" required>
+                    </p>
+                    <p>
+                        <label for="password">Mot de passe</label>
+                        <input id="password" type="password" name="password" required>
+                    </p>
+                    <button type="submit" name="submit_login" class="btn btn-primary">Connexion</button>
+                </form>
+            </div>
 
+            <!-- Register Form -->
+            <div class="register-show" {% if not show_register %}style="display:none;"{% endif %}>
+                <form method="POST">
+                    <h2>REGISTER</h2>
+                    <p>
+                        <label for="username_register">Nom d'utilisateur</label>
+                        <input id="username_register" type="text" name="username_register" required>
+                    </p>
+                    <p>
+                        <label for="password_register">Mot de passe</label>
+                        <input id="password_register" type="password" name="password_register" required>
+                    </p>
+                    <p>
+                        <label for="email_register">Email</label>
+                        <input id="email_register" type="email" name="email_register" required>
+                    </p>
+                    <button type="submit" name="submit_register" class="btn btn-primary">S'inscrire</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
