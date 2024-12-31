@@ -17,6 +17,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from store.views import index, product_detail, add_to_cart, cart, delete_cart
+from blog.views import blog_home, blog_post_detail
 from accounts.views import signup, login_user, logout_user
 
 from supershop import settings
@@ -31,4 +32,7 @@ urlpatterns = [
                   path('cart/delete/', delete_cart, name="delete-cart"),
                   path('product/<str:slug>', product_detail, name="product"),
                   path('product/<str:slug>/add-to-cart/', add_to_cart, name="add-to-cart"),
+                  path('blog/', blog_home, name='blog_home'),
+                  path('<slug:slug>/', blog_post_detail, name='blog_post_detail'),
+
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
