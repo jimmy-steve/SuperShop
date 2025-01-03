@@ -6,6 +6,34 @@ from django.urls import reverse
 
 from store.models import Product, Cart, Order
 
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail
+from django.contrib import messages
+from django.conf import settings
+
+def about(request):
+    return render(request, 'about.html')
+
+
+def contact(request):
+    if request.method == "POST":
+        # email = request.POST.get("email")
+        # name = request.POST.get("name")
+        # message = request.POST.get("message")
+        # contact_method = request.POST.get("contact_method")
+        # priority = request.POST.get("priority")
+
+        # Ajout de la logique d'envoi d'email
+        # send_mail(
+        #     subject=f"Nouveau message de {name} (priorité {priority})",
+        #     message=f"Message: {message}\nContact via: {contact_method}",
+        #     from_email=settings.DEFAULT_FROM_EMAIL,
+        #     recipient_list=[settings.DEFAULT_FROM_EMAIL],
+        # )
+        messages.success(request, "Votre message a été envoyé avec succès.")
+        return redirect('contact')
+    return render(request, 'contact.html')
+
 
 def index(request):
     products = Product.objects.all()

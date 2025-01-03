@@ -10,18 +10,18 @@
             <input type="radio" name="active-log-panel" id="log-reg-show" {% if not show_register %}checked{% endif %}>
         </div>
 
-        <div class="register-info-box">
+        <div class="register-info-box text-light">
             <h2>Don't have an account?</h2>
             <p>If you don't have an account yet, you can register here to get started and enjoy all the features we offer.</p>
             <label id="label-login" for="log-login-show">Register</label>
             <input type="radio" name="active-log-panel" id="log-login-show" {% if show_register %}checked{% endif %}>
         </div>
 
-        <div class="white-panel">
+        <div class="white-panel p-4">
             <!-- Login Form -->
             <div class="login-show" {% if show_register %}style="display:none;"{% endif %}>
                 <form method="POST">
-                    <h2>LOGIN</h2>
+                    <h2 class="text-primary">LOGIN</h2>
                     <p>
                         <label for="username">Nom d'utilisateur</label>
                         <input id="username" type="text" name="username" required>

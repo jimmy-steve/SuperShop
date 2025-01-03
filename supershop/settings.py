@@ -130,3 +130,12 @@ MEDIA_URL = "/media/"
 # direction du fichier media
 MEDIA_ROOT = BASE_DIR / "media"
 AUTH_USER_MODEL = "accounts.Shopper"
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.votre_fournisseur_email.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'votre_adresse_email@example.com'
+EMAIL_HOST_PASSWORD = 'votre_mot_de_passe'
+DEFAULT_FROM_EMAIL = 'votre_adresse_email@example.com'
+

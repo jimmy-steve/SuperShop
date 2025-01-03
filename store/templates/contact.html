@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col-md-6 mx-auto mt-4 mb-4 bg-light rounded-3 p-3">
+    <h1 class="text-center">Contactez-nous</h1>
+    {% if messages %}
+        <div class="alert alert-success" role="alert">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Informations personnelles</legend>
+            <div class="row">
+                <div class="mb-3 col-6">
+                    <label for="staticEmail" class="form-label">Votre Email</label>
+                    <input type="email" class="form-control" id="staticEmail" name="email" placeholder="exemple@domain.com" required>
+                </div>
+                <div class="mb-3 col-6">
+                    <label for="username" class="form-label">Nom complet</label>
+                    <input type="text" class="form-control" id="username" name="name" placeholder="John Doe" required>
+                </div>
+            </div>
+
+        </fieldset>
+        <fieldset>
+            <legend class="mt-4">Votre message</legend>
+            <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Joindre un fichier</label>
+                <input class="form-control" type="file" id="formFile" name="attachment">
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend class="mt-4">Préférences</legend>
+            <div class="mb-3">
+                <label for="contactMethod" class="form-label">Méthode de contact préférée</label>
+                <select class="form-select" id="contactMethod" name="contact_method">
+                    <option value="email">Email</option>
+                    <option value="phone">Téléphone</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="priority" class="form-label">Priorité</label>
+                <input type="range" class="form-range" id="priority" name="priority" min="1" max="5" step="1">
+            </div>
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+    </form>
+</div>
+{% endblock %}

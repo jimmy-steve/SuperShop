@@ -1,27 +1,27 @@
-<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'index' %}">Super PYAPP</a>
+    <a class="navbar-brand" href="{% url 'index' %}">Py-Frank</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarColor01">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link active" href="{% url 'index' %}">Home
-            <span class="visually-hidden">(current)</span>
-          </a>
-        </li>
-
-
-
-
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'blog_home' %}">Blog</a>
-        </li>
-      </ul>
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link link-body-emphasis px-2" href="{% url 'blog_home' %}">Blogs</a>
+                    </li>
+                    <li class="nav-item d-none d-sm-block d-md-block">
+                        <span class="nav-link link-body-emphasis px-2">|</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-body-emphasis px-2" href="{% url 'contact' %}">Contact</a>
+                    </li>
+                    <li class="nav-item d-none d-sm-block d-md-block">
+                        <span class="nav-link link-body-emphasis px-2">|</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-body-emphasis px-2" href="/about">About</a>
+                    </li>
+                </ul>
       <ul class="navbar-nav ml-auto">
         {% if user.cart %}
         <li class="nav-item me-2">
